@@ -26,6 +26,7 @@ import base.Testbase;
 import pageModule.Login_Test;
 import pageModule.Manage_Client_Test;
 import pageModule.Manage_Profession_Test;
+import util.Email;
 import util.ReadExcel;
 
 public class Admin extends Testbase {
@@ -33,6 +34,7 @@ public class Admin extends Testbase {
 	public Login_Test login = new Login_Test();
 	public Manage_Client_Test manage_client = new Manage_Client_Test();
 	public Manage_Profession_Test manage_profession = new Manage_Profession_Test();
+	public Email email = new Email();
 	public static ExtentTest test;
 	public static ExtentReports report;
 
@@ -113,7 +115,7 @@ public class Admin extends Testbase {
 		login.Login_invalid(test, driver, UserName, Password);
 	}
 
-	@Test(dataProvider = "AddClient", enabled = false, priority = 3, threadPoolSize = 9)
+	@Test(dataProvider = "AddClient", enabled = true, priority = 3, threadPoolSize = 9)
 	@Parameters({ "browsername" })
 	public void Add_Client_test(String UserName, String Password, String Firstname, String Lastname, String Email,
 			String Phone, String Address1, String Address2, String City, String Zipcode)
@@ -128,7 +130,7 @@ public class Admin extends Testbase {
 		manage_client.Delete_client(test, driver);
 	}
 
-	@Test(dataProvider = "LoginValidData", enabled = false, priority = 4, threadPoolSize = 9)
+	@Test(dataProvider = "LoginValidData", enabled = true, priority = 4, threadPoolSize = 9)
 	public void Manage_Profession_test(String UserName, String Password)
 			throws InterruptedException, IOException, AWTException {
 		System.out.println("Manage Profession test");
@@ -150,6 +152,7 @@ public class Admin extends Testbase {
 
 	@AfterClass
 	public void afterclass() {
+
 		System.out.println("This is after class");
 		report.flush();
 
@@ -157,8 +160,9 @@ public class Admin extends Testbase {
 
 	@AfterSuite
 	public void aftersuite() {
-		System.out.println("This is after suite");
 
+		Email.emailSend();
+		System.out.println("This is after suite");
 	}
 
 }

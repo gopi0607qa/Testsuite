@@ -64,12 +64,12 @@ public class Client_xpath extends Testbase {
 	@FindBy(xpath = "//table[@class='table table-dark table-striped table-bordered table-hover']/tbody/tr[1]/td[2]")
 	public WebElement first_client_list;
 
-	@FindBy(xpath = "//table[@class='table table-dark table-striped table-bordered table-hover']/tbody/tr[1]/td[8]/div/div[1]/img")
+	@FindBy(xpath = "//table[@class='table table-dark table-striped table-bordered table-hover']/tbody/tr[1]/td[9]/div/div[1]/img")
 	public WebElement delete_first_client;
 
 	@FindBy(xpath = "//button[@class='swal2-confirm swal2-styled swal2-default-outline']")
 	public WebElement confirm_alert_button;
 
-	@FindBy(xpath = "//table[@class='table table-dark table-striped table-bordered table-hover']/tbody/tr[1]/td[8]/div/div[2]/img")
+	@FindBy(xpath = "//table[@class='table table-dark table-striped table-bordered table-hover']/tbody/tr[1]/td[9]/div/div[2]/img")
 	public WebElement suspend_first_button;
 }

@@ -42,7 +42,7 @@ public class Manage_Client_Test extends Testbase {
 
 			Select select_profession = new Select(client_xpath.select_profession);
 			fun.explicit_Wait(driver, client_xpath.select_profession);
-			select_profession.selectByIndex(2);
+			select_profession.selectByIndex(1);
 			test.log(Status.INFO, "Profession is selected",
 					MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
 
