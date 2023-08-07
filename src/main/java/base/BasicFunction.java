@@ -18,6 +18,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -64,6 +65,7 @@ public class BasicFunction extends Testbase {
 				.pollingEvery(Duration.ofSeconds(3)).ignoring(NoSuchElementException.class);
 
 		WebElement elementWaitedFor = wait.until(new Function<WebDriver, WebElement>() {
+			@Override
 			public WebElement apply(WebDriver driver) {
 				return element;
 			}
@@ -137,6 +139,83 @@ public class BasicFunction extends Testbase {
 		}
 	}
 
+	// Robot class method for Photoupload
+	public void Photoupload() throws AWTException {
+
+		// creating object of Robot class
+		Robot rb = new Robot();
+
+		try {
+			rb.keyPress(KeyEvent.VK_DOWN);
+			rb.keyRelease(KeyEvent.VK_DOWN);
+
+			// press Contol+V for pasting
+			rb.keyPress(KeyEvent.VK_CONTROL);
+			rb.keyPress(KeyEvent.VK_A);
+
+			// release Contol+V for pasting
+			rb.keyRelease(KeyEvent.VK_CONTROL);
+			rb.keyRelease(KeyEvent.VK_A);
+
+			rb.keyPress(KeyEvent.VK_BACK_SPACE);
+			rb.keyRelease(KeyEvent.VK_BACK_SPACE);
+
+			// press Contol+V for pasting
+			rb.keyPress(KeyEvent.VK_CONTROL);
+			rb.keyPress(KeyEvent.VK_V);
+
+			// release Contol+V for pasting
+			rb.keyRelease(KeyEvent.VK_CONTROL);
+			rb.keyRelease(KeyEvent.VK_V);
+			rb.delay(4000);
+
+			rb.keyPress(KeyEvent.VK_DOWN);
+			rb.keyRelease(KeyEvent.VK_DOWN);
+
+			// for pressing and releasing Enter
+			rb.keyPress(KeyEvent.VK_ENTER);
+			rb.keyRelease(KeyEvent.VK_ENTER);
+		} catch (Exception e) {
+			rb.keyPress(KeyEvent.VK_DOWN);
+			rb.keyRelease(KeyEvent.VK_DOWN);
+
+			// press Contol+V for pasting
+			rb.keyPress(KeyEvent.VK_CONTROL);
+			rb.keyPress(KeyEvent.VK_A);
+
+			// release Contol+V for pasting
+			rb.keyRelease(KeyEvent.VK_CONTROL);
+			rb.keyRelease(KeyEvent.VK_A);
+
+			rb.keyPress(KeyEvent.VK_BACK_SPACE);
+			rb.keyRelease(KeyEvent.VK_BACK_SPACE);
+
+			// press Contol+V for pasting
+			rb.keyPress(KeyEvent.VK_CONTROL);
+			rb.keyPress(KeyEvent.VK_V);
+
+			// release Contol+V for pasting
+			rb.keyRelease(KeyEvent.VK_CONTROL);
+			rb.keyRelease(KeyEvent.VK_V);
+			rb.delay(4000);
+
+			rb.keyPress(KeyEvent.VK_DOWN);
+			rb.keyRelease(KeyEvent.VK_DOWN);
+
+			// for pressing and releasing Enter
+			rb.keyPress(KeyEvent.VK_ENTER);
+			rb.keyRelease(KeyEvent.VK_ENTER);
+			e.printStackTrace();
+		}
+
+	}
+
+	public void image_crop(WebDriver driver, WebElement xpath) {
+
+		new Actions(driver).clickAndHold(xpath).moveByOffset(20, 20).release(xpath).build().perform();
+
+	}
+
 	// Method to Take screenshot
 	public String capturescreenshot(WebDriver driver) throws IOException {
 
@@ -157,7 +236,7 @@ public class BasicFunction extends Testbase {
 
 	public String capturescreenshotfullpage(WebDriver driver) throws IOException {
 
-		DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy h-m-s");
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy H-m-s-S");
 		Date date = new Date();
 		File Dest = new File(System.getProperty("user.dir") + "/src/test/resources/output/Screenshot/"
 				+ dateFormat.format(date) + "Screenshot" + System.currentTimeMillis() + ".png");

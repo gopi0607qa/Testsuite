@@ -1,5 +1,7 @@
 package webElement;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,8 +21,14 @@ public class Client_xpath extends Testbase {
 	@FindBy(xpath = "//button[contains(text(),'+ Add Professional')]")
 	public WebElement add_client_button;
 
-	@FindBy(xpath = "//select[@id='formSelect']")
+	@FindBy(xpath = "//div[@class='select-search-container']/div/input")
 	public WebElement select_shop;
+
+	@FindBy(xpath = "//input[@class='select-search-input']")
+	public WebElement shop_input;
+
+	@FindBy(xpath = "//li[@class='select-search-row']")
+	public List<WebElement> shop_list;
 
 	@FindBy(xpath = "//select[@id='formprofessionSelect']")
 	public WebElement select_profession;

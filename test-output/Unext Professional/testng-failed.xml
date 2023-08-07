@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="classes" name="Failed suite [Unext Professional]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="classes" name="Chrome Test(failed)">
+    <parameter name="browsername" value="Chrome"/>
+    <classes>
+      <class name="execution.Professional">
+        <methods>
+          <include name="Logoimageuploadtest"/>
+          <include name="aftersuite"/>
+          <include name="aftermethod"/>
+          <include name="Profileimageuploadtest"/>
+          <include name="afterclass"/>
+          <include name="beforemethod"/>
+          <include name="beforeclass"/>
+          <include name="beforesuite"/>
+        </methods>
+      </class> <!-- execution.Professional -->
+    </classes>
+  </test> <!-- Chrome Test(failed) -->
+</suite> <!-- Failed suite [Unext Professional] -->

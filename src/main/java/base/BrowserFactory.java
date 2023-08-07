@@ -18,14 +18,13 @@ public class BrowserFactory {
 		WebDriver driver = null;
 
 		if (browsername.equalsIgnoreCase("Chrome")) {
+
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--incognito");
-			options.addArguments("--remote-allow-origins=*");
-			options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+//			options.addArguments("--remote-allow-origins=*");
+//			options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+//			System.setProperty("webdriver.chrome.driver", "src/test/resources/driverExe/chromedriver.exe");
 			driver = new ChromeDriver(options);
-//			DevTools devtools = ((ChromeDriver) driver).maybeGetDevTools().get();
-//			devtools.createSession();
-//			devtools.send(Emulation.setTimezoneOverride("US/Pacific"));
 
 		} else if (browsername.equalsIgnoreCase("Firefox")) {
 			FirefoxOptions options = new FirefoxOptions();
@@ -42,6 +41,7 @@ public class BrowserFactory {
 			options.addArguments("InPrivate");
 			options.addArguments("--remote-allow-origins=*");
 			options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+			System.setProperty("webdriver.chrome.driver", "src/test/resources/driverExe/msedgedriver.exe");
 			driver = new EdgeDriver(options);
 //			DevTools devtools = ((EdgeDriver) driver).maybeGetDevTools().get();
 //			devtools.createSession();

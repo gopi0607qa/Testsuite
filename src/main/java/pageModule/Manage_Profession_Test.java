@@ -2,6 +2,7 @@ package pageModule;
 
 import java.io.IOException;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -10,13 +11,15 @@ import com.aventstack.extentreports.Status;
 
 import base.BasicFunction;
 import base.Testbase;
+import util.Currentdate;
+import util.Email_custom;
 import webElement.Profession_xpath;
 
 public class Manage_Profession_Test extends Testbase {
 
 	public BasicFunction fun = new BasicFunction();
 
-	public void Add_Profession(ExtentTest test, WebDriver driver) throws IOException {
+	public void Add_Profession(ExtentTest test, WebDriver driver, String browser, String testname) throws IOException {
 
 		Profession_xpath pro_xpath = new Profession_xpath(driver);
 
@@ -46,12 +49,20 @@ public class Manage_Profession_Test extends Testbase {
 				fun.explicit_Wait_invisible(driver, pro_xpath.success_popup);
 				test.log(Status.INFO, "Success pop-up is closed",
 						MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
+				String e_messagepass = "Browser details:" + '\n' + '\n' + browser + '\n' + '\n' + "On " + '\n' + '\n'
+						+ Currentdate.Systemdate() + " Add Profession test is PASSED..!";
+				String teststatus = "Add Profession test passed.";
+				Email_custom.emailSendpass(testname, teststatus, e_messagepass);
 
 			} else {
 				test.log(Status.FAIL,
 						"Expected text is Profession added successfully actual text is "
 								+ pro_xpath.success_popup.getText(),
 						MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
+				String e_messagefail = "On " + Currentdate.Systemdate() + " Add Profession test is failed."
+						+ " Message displayed is " + pro_xpath.success_popup.getText() + '\n' + browser + '\n' + '\n';
+				String teststatus = "Add Profession test failed.";
+				Email_custom.emailSendfail(testname, teststatus, e_messagefail);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -59,11 +70,16 @@ public class Manage_Profession_Test extends Testbase {
 					MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
 			e.printStackTrace();
 
+			String e_messagefail = "On " + Currentdate.Systemdate() + " Add Profession test is failed." + '\n';
+			String teststatus = '\n' + '\n' + browser + '\n' + '\n' + "Add Profession test failed with Exception."
+					+ '\n' + ExceptionUtils.getStackTrace(e);
+			Email_custom.emailSendfail(testname, teststatus, e_messagefail);
+
 		}
 
 	}
 
-	public void Edit_Profession(ExtentTest test, WebDriver driver) throws IOException {
+	public void Edit_Profession(ExtentTest test, WebDriver driver, String browser, String testname) throws IOException {
 		Profession_xpath pro_xpath = new Profession_xpath(driver);
 
 		try {
@@ -93,12 +109,21 @@ public class Manage_Profession_Test extends Testbase {
 				fun.explicit_Wait_invisible(driver, pro_xpath.success_popup);
 				test.log(Status.INFO, "Success pop-up is closed",
 						MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
+				String e_messagepass = "Browser details:" + '\n' + '\n' + browser + '\n' + '\n' + "On "
+						+ Currentdate.Systemdate() + " Edit Profession test is PASSED..!";
+				String teststatus = "Edit Profession test passed.";
+				Email_custom.emailSendpass(testname, teststatus, e_messagepass);
 
 			} else {
 				test.log(Status.FAIL,
 						"Expected message is Profession updated successfully, actual message is "
 								+ pro_xpath.success_popup.getText(),
 						MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
+				String e_messagefail = "Browser details:" + '\n' + '\n' + browser + '\n' + '\n' + "On "
+						+ Currentdate.Systemdate() + " Edit Profession test is failed." + " Message displayed is "
+						+ pro_xpath.success_popup.getText();
+				String teststatus = "Edit Profession test failed.";
+				Email_custom.emailSendfail(testname, teststatus, e_messagefail);
 
 			}
 		} catch (Exception e) {
@@ -107,11 +132,16 @@ public class Manage_Profession_Test extends Testbase {
 					MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
 
 			e.printStackTrace();
+			String e_messagefail = "On " + Currentdate.Systemdate() + " Edit Profession test is failed." + '\n';
+			String teststatus = "Browser details:" + '\n' + '\n' + browser + '\n' + '\n'
+					+ "Edit Profession test failed with Exception." + '\n' + ExceptionUtils.getStackTrace(e);
+			Email_custom.emailSendfail(testname, teststatus, e_messagefail);
 		}
 
 	}
 
-	public void Delete_Profession(ExtentTest test, WebDriver driver) throws IOException {
+	public void Delete_Profession(ExtentTest test, WebDriver driver, String browser, String testname)
+			throws IOException {
 
 		Profession_xpath pro_xpath = new Profession_xpath(driver);
 
@@ -137,18 +167,32 @@ public class Manage_Profession_Test extends Testbase {
 				fun.explicit_Wait_invisible(driver, pro_xpath.success_popup);
 				test.log(Status.INFO, "Success pop-up is closed",
 						MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
+				String e_messagepass = "Browser details:" + '\n' + '\n' + browser + '\n' + '\n' + "On "
+						+ Currentdate.Systemdate() + " Delete Profession test is PASSED..!";
+				String teststatus = "Delete Profession test passed.";
+				Email_custom.emailSendpass(testname, teststatus, e_messagepass);
 
 			} else {
 				test.log(Status.FAIL,
 						"Expected message is 'Profession deleted successfully!' but the message is '"
 								+ pro_xpath.success_popup.getText() + "'",
 						MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
+				String e_messagefail = "Browser details:" + '\n' + '\n' + browser + '\n' + '\n' + "On "
+						+ Currentdate.Systemdate() + " Delete Profession test is failed." + " Message displayed is "
+						+ pro_xpath.success_popup.getText();
+				String teststatus = "Delete Profession test failed.";
+				Email_custom.emailSendfail(testname, teststatus, e_messagefail);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			test.log(Status.FAIL, e.getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(fun.capturescreenshotfullpage(driver)).build());
 			e.printStackTrace();
+			String e_messagefail = "Browser details:" + '\n' + '\n' + browser + '\n' + '\n' + "On "
+					+ Currentdate.Systemdate() + " Delete Profession test is failed.";
+			String teststatus = "Delete Profession test failed with Exception." + '\n'
+					+ ExceptionUtils.getStackTrace(e);
+			Email_custom.emailSendfail(testname, teststatus, e_messagefail);
 		}
 
 	}
